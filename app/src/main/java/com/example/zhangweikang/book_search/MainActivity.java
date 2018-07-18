@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.LoginFilter;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private List<ForBean> mBeans;
     private List<Page> mPage;
-    private Button bt1;
-    private EditText ed1;
     private Document document;
     private Document document1;
     private Document document2;
@@ -40,15 +39,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bt1 =(Button)findViewById(R.id.bt1);
-        ed1 =(EditText)findViewById(R.id.ed1);
+//        bt1 =(Button)findViewById(R.id.bt1);
+//        ed1 =(EditText)findViewById(R.id.ed1);
         mSearchView=findViewById(R.id.sh1);
         mSearchView.setIconifiedByDefault(true);
 //        mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                if(query.length()==0){
+                    Toast.makeText(MainActivity.this, "请输入查找内容！", Toast.LENGTH_SHORT).show();
+                    Log.i("TAG","empty click");
+                }
+                else{
+                    new_url=new_url+query;
+                    mBeans = new ArrayList<>();
+                    mPage = new ArrayList<Page>();
+                    Intent main_intent = new Intent(MainActivity.this,ShowActivity.class);
+                    Bundle bd = new Bundle();
+                    bd.putString("a",new_url);
+                    main_intent.putExtras(bd);
+//                jsoupPage(new_url);
+                    new_url="https://www.gxwztv.com/search.htm?keyword=";
+                    MainActivity.this.startActivity(main_intent);
+                    mSearchView.setQuery("",false);
+//                    mSearchView.setFocusable(false);
+                }
+                return true;
             }
 
             @Override
@@ -56,23 +73,24 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new_url=new_url+ed1.getText();
-               Log.i(TAG, "onClick: "+new_url);
-                mBeans = new ArrayList<>();
-                mPage = new ArrayList<Page>();
-                Intent main_intent = new Intent(MainActivity.this,ShowActivity.class);
-                Bundle bd = new Bundle();
-                bd.putString("a",new_url);
-                main_intent.putExtras(bd);
-//                jsoupPage(new_url);
-                new_url="https://www.gxwztv.com/search.htm?keyword=";
-                MainActivity.this.startActivity(main_intent);
-            }
 
-        });
+//        bt1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new_url=new_url+ed1.getText();
+//               Log.i(TAG, "onClick: "+new_url);
+//                mBeans = new ArrayList<>();
+//                mPage = new ArrayList<Page>();
+//                Intent main_intent = new Intent(MainActivity.this,ShowActivity.class);
+//                Bundle bd = new Bundle();
+//                bd.putString("a",new_url);
+//                main_intent.putExtras(bd);
+////                jsoupPage(new_url);
+//                new_url="https://www.gxwztv.com/search.htm?keyword=";
+//                MainActivity.this.startActivity(main_intent);
+//            }
+//
+//        });
 
 
     }
