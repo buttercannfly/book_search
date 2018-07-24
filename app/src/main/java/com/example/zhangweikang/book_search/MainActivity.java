@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bd = new Bundle();
                     bd.putString("a",new_url);
                     main_intent.putExtras(bd);
-//                jsoupPage(new_url);
+//                  jsoupPage(new_url);
                     new_url="https://www.gxwztv.com/search.htm?keyword=";
                     MainActivity.this.startActivity(main_intent);
-                    mSearchView.setQuery("",false);
+//                    mSearchView.setQuery("",false);
 //                    mSearchView.setFocusable(false);
                 }
                 return true;

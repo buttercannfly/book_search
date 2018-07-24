@@ -1,5 +1,6 @@
 package com.example.zhangweikang.book_search;
 
+import android.graphics.Bitmap;
 import android.nfc.Tag;
 import android.util.Log;
 
@@ -11,16 +12,14 @@ import static android.content.ContentValues.TAG;
 
 public class ForBean {
     public String text;
-    public String image;
     public String Novelname;
     public String Novellink;
     public String latestname;
     public String latestlink;
     public String authorName;
     public String time;
-    
-   public String getImage(){return image;}
-    public void setImage(String image){this.image = image;}
+    public Bitmap pic;
+
 
     public String getText(){
         return text;
@@ -30,7 +29,6 @@ public class ForBean {
     }
     public String getNovelname(){return Novelname;}
     public void setNovelname(String novelname){
-        Log.i("sdjaid","23184194");
         this.Novelname= novelname;
     }
     public String getLatestname(){return latestname;}
@@ -43,4 +41,12 @@ public class ForBean {
     public void setTime(String time){this.time=time;}
     public String getAuthorName(){return authorName;}
     public void setAuthorName(String authorName){this.authorName=authorName;}
+
+    public Bitmap getPic() {
+        return pic;
+    }
+
+    public void setPic(Bitmap pic) {
+        this.pic = pic;
+    }
 }

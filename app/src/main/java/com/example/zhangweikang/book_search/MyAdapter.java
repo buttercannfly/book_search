@@ -1,11 +1,15 @@
 package com.example.zhangweikang.book_search;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,10 +52,12 @@ public class MyAdapter extends BaseAdapter {
         TextView tv_latest=(TextView)view.findViewById(R.id.latest_name);
         TextView tv_author = (TextView) view.findViewById(R.id.author_name);
         TextView tv_time = (TextView) view.findViewById(R.id.span_time);
+        ImageView pic=(ImageView) view.findViewById(R.id.pic);
         tv_novlename.setText(mbean.getNovelname());
         tv_latest.setText(mbean.getLatestname());
         tv_author.setText(mbean.getAuthorName());
         tv_time.setText(mbean.getTime());
+        pic.setImageBitmap(mbean.getPic());
         return view;
     }
 }
