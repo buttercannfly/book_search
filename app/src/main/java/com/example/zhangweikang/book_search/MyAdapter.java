@@ -2,6 +2,7 @@ package com.example.zhangweikang.book_search;
 
 import android.content.Context;
 import android.media.Image;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -46,18 +49,37 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        View view =inflater.inflate(R.layout.item_home,null);
         ForBean mbean = getItem(position);
-        TextView tv_novlename = (TextView) view.findViewById(R.id.novel_name);
-        TextView tv_latest=(TextView)view.findViewById(R.id.latest_name);
-        TextView tv_author = (TextView) view.findViewById(R.id.author_name);
-        TextView tv_time = (TextView) view.findViewById(R.id.span_time);
-        ImageView pic=(ImageView) view.findViewById(R.id.pic);
-        tv_novlename.setText(mbean.getNovelname());
-        tv_latest.setText(mbean.getLatestname());
-        tv_author.setText(mbean.getAuthorName());
-        tv_time.setText(mbean.getTime());
-        pic.setImageBitmap(mbean.getPic());
-        return view;
+        ViewHolder holder=null;
+        if(convertView==null){
+            convertView =inflater.inflate(R.layout.item_home,null);
+            holder=new ViewHolder();
+            holder.pic=(ImageView) convertView.findViewById(R.id.pic);
+            holder.tv_author= (TextView) convertView.findViewById(R.id.author_name);
+            holder.tv_latest=(TextView)convertView.findViewById(R.id.latest_name);
+            holder.tv_novlename=(TextView) convertView.findViewById(R.id.novel_name);
+            holder.tv_time=(TextView) convertView.findViewById(R.id.span_time);
+            convertView.setTag(holder);
+        }
+        else{
+            holder=(ViewHolder)convertView.getTag();
+        }
+        holder.pic.setImageBitmap(mbean.getPic());
+        holder.tv_time.setText(mbean.getTime());
+        holder.tv_novlename.setText(mbean.getNovelname());
+        holder.tv_latest.setText(mbean.getLatestname());
+        holder.tv_author.setText(mbean.getAuthorName());
+        return convertView;
+    }
+    public void add(){
+        notifyDataSetChanged();
+    }
+
+    private class ViewHolder {
+        ImageView pic;
+        TextView tv_author;
+        TextView tv_latest;
+        TextView tv_time;
+        TextView tv_novlename;
     }
 }

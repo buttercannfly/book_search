@@ -3,36 +3,23 @@ package com.example.zhangweikang.book_search;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.test.UiThreadTest;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +33,8 @@ public class ShowActivity extends AppCompatActivity {
     private Button bt;
     private Document document;
     private ListView lv;
-    private String[] mListStr = {"name:ZWK","mature","age","live_area"};
     private  String page_url;
     private MyAdapter me;
-    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +50,11 @@ public class ShowActivity extends AppCompatActivity {
             mPage = new ArrayList<Page>();
             qq = new ArrayList<Nextpage>();
             jsoupData1(page_url);
-            for(int i=0;i<mBeans.size();i++){
-                if(mBeans.get(i).getPic()==null) {
-                    jsoupGet(i);//获取书籍封面
-                }
-            }
+//            for(int i=0;i<mBeans.size();i++){
+//                if(mBeans.get(i).getPic()==null) {
+//                    jsoupGet(i);//获取书籍封面
+//                }
+//            }
             ListView list_item = (ListView) findViewById(R.id.lllist);
             me = new MyAdapter(mBeans,ShowActivity.this);
             list_item.setAdapter(me);
@@ -93,8 +78,10 @@ public class ShowActivity extends AppCompatActivity {
                 for(int i=0;i<mBeans.size();i++){
                     if(mBeans.get(i).getPic()==null) {
                         jsoupGet(i);//获取书籍封面
+                        me.notifyDataSetChanged();
                     }
                 }
+
             }
         });
 
@@ -215,6 +202,10 @@ public class ShowActivity extends AppCompatActivity {
                 }
             }).start();
         }
+
+
+
+
 
     public static Bitmap getBitmap(String path) throws IOException{
         URL url = new URL(path);
