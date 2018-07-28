@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Document document1;
     private Document document2;
     private SearchView mSearchView;
+    private Button bt;
 
     public static String new_url = "https://www.gxwztv.com/search.htm?keyword=";
     @Override
@@ -43,7 +44,15 @@ public class MainActivity extends AppCompatActivity {
 //        ed1 =(EditText)findViewById(R.id.ed1);
         mSearchView=findViewById(R.id.sh1);
         mSearchView.setIconifiedByDefault(true);
-//        mSearchView.setSubmitButtonEnabled(true);
+        bt=findViewById(R.id.bt1);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Robot.class);
+                startActivity(intent);
+            }
+        });
+        mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

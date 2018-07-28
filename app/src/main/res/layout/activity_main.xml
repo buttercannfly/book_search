@@ -21,4 +21,11 @@
            android:id="@+id/sh1">
        </SearchView>
    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:text="AI" />
 </LinearLayout>
