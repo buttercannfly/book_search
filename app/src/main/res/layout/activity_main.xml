@@ -9,23 +9,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@mipmap/bg"
     tools:context="com.example.zhangweikang.book_search.MainActivity">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal">
+
        <SearchView
+           android:id="@+id/sh1"
            android:layout_width="match_parent"
            android:layout_height="60dp"
-           android:id="@+id/sh1">
-       </SearchView>
+           android:queryHint="type book name"></SearchView>
    </LinearLayout>
 
     <Button
         android:id="@+id/bt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_light"
         android:text="AI" />
 </LinearLayout>

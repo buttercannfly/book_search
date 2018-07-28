@@ -1,8 +1,11 @@
 package com.example.zhangweikang.book_search;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,9 +35,10 @@ public class ShowActivity extends AppCompatActivity {
     private List<Nextpage> qq;
     private Button bt;
     private Document document;
-    private ListView lv;
+    private ListView list_item;
     private  String page_url;
     private MyAdapter me;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,46 @@ public class ShowActivity extends AppCompatActivity {
 //                    jsoupGet(i);//获取书籍封面
 //                }
 //            }
-            ListView list_item = (ListView) findViewById(R.id.lllist);
+
+            mHandler=new Handler(){
+                @Override
+                public void handleMessage(Message msg){
+                    super.handleMessage(msg);
+                    me.notifyDataSetChanged();
+                }
+            };
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        for(int i=0;i<mBeans.size();i++){
+                            if(mBeans.get(i).getPic()==null){
+                                String pic_nice="";
+                                Bitmap pic=null;
+                                document = (Document) Jsoup.connect(mBeans.get(i).getNovellink()).timeout(10000).get();
+                                Elements noteList = document.select("div.panel-body");
+                                Elements li = noteList.select("div.col-xs-8");
+                                Elements lii = li.select("div.panel.panel-default.mt20");
+                                Elements liii = lii.select("div.panel-body");
+                                pic_nice += document.select("img.img-thumbnail").attr("abs:src");
+                                Log.e(TAG,"pic_url:"+pic_nice);
+                                pic=getBitmap(pic_nice);
+                                mBeans.get(i).setPic(pic);
+                                Message message = new Message();
+                                mHandler.sendMessage(message);
+                            }
+                        }
+                    }
+                    catch(Exception e){
+                        Log.e("TAG","im out");
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
+
+            list_item = (ListView) findViewById(R.id.lllist);
             me = new MyAdapter(mBeans,ShowActivity.this);
             list_item.setAdapter(me);
             list_item.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,22 +114,51 @@ public class ShowActivity extends AppCompatActivity {
         }
 
 
-        bt=findViewById(R.id.bt1);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for(int i=0;i<mBeans.size();i++){
-                    if(mBeans.get(i).getPic()==null) {
-                        jsoupGet(i);//获取书籍封面
-                        me.notifyDataSetChanged();
-                    }
+//        bt=findViewById(R.id.bt1);//按钮点击刷新界面，后期去掉
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                for(int i=0;i<mBeans.size();i++){
+//                    if(mBeans.get(i).getPic()==null) {
+//                        jsoupGet(i);//获取书籍封面
+//                        me.notifyDataSetChanged();
+//                        list_item.setAdapter(me);
+//                    }
+//                }
+//
+//            }
+//        });
+
+
+    }
+
+    Runnable add=new Runnable() {
+        @Override
+        public void run() {
+            for(int i=0;i<mBeans.size();i++){
+                String pic_nice="";
+                Bitmap pic=null;
+                try {
+                    Nextpage ll = new Nextpage();
+                    document = (Document) Jsoup.connect(mBeans.get(i).getNovellink()).timeout(10000).get();
+                    Elements noteList = document.select("div.panel-body");
+                    Elements li = noteList.select("div.col-xs-8");
+                    Elements lii = li.select("div.panel.panel-default.mt20");
+                    Elements liii = lii.select("div.panel-body");
+                    pic_nice += document.select("img.img-thumbnail").attr("abs:src");
+//                    Log.e(TAG,"pic_url:"+pic_nice);
+                    pic=getBitmap(pic_nice);
+                    mBeans.get(i).setPic(pic);
                 }
-
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                me.notifyDataSetChanged();
             }
-        });
+        }
+    };
 
 
- }
 
 
     public void jsoupData1(final String a){
@@ -207,7 +279,7 @@ public class ShowActivity extends AppCompatActivity {
 
 
 
-    public static Bitmap getBitmap(String path) throws IOException{
+    public Bitmap getBitmap(String path) throws IOException{
         URL url = new URL(path);
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         conn.setConnectTimeout(5000);
@@ -218,7 +290,10 @@ public class ShowActivity extends AppCompatActivity {
             return bitmap;
         }
 
-        return null;
+        Resources res= getResources();
+        Bitmap bmp =BitmapFactory.decodeResource(res,R.mipmap.ic_launcher);
+
+        return bmp;
     }
 }
 

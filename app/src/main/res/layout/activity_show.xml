@@ -8,12 +8,6 @@
     tools:context="com.example.zhangweikang.book_search.ShowActivity">
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt1"
-        android:text="refresh"/>
-
     <ListView
         android:id="@+id/lllist"
         android:layout_width="match_parent"
