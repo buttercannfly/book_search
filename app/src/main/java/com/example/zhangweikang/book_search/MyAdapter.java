@@ -1,85 +1,68 @@
 package com.example.zhangweikang.book_search;
 
+
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-/**
- * Created by ZHANGWEIKANG on 2018/5/19.
- */
-
-public class MyAdapter extends BaseAdapter {
-
-    private List<ForBean> mBean;
-    private LayoutInflater inflater;
-    public MyAdapter(){}
-
-    public MyAdapter(List<ForBean> mBean, Context context){
-        this.mBean = mBean;
-        this.inflater = LayoutInflater.from(context);
-
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
+    private List<Goods> mgoods;
+    private Context context;
+    private onRecyclerViewItemClick mOnRvItemClick;
+    public MyAdapter(Context context, List<Goods> mgoods, onRecyclerViewItemClick onRvItemClick){
+        this.mgoods=mgoods;
+        this.mOnRvItemClick = onRvItemClick;
+        this.context=context;
     }
 
     @Override
-    public int getCount(){
-        return mBean == null?0:mBean.size();
+    public MyAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hom,parent,false);
+        MyAdapter.ViewHolder viewHolder = new MyAdapter.ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public ForBean getItem(int position){
-        return mBean.get(position);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.mText.setText(mgoods.get(position).getGood_name());
+        Glide.with(context).load(mgoods.get(position).getImage())
+                .into(holder.img);
+        holder.pri.setText(mgoods.get(position).getPrice());
+        holder.pri_now.setText(mgoods.get(position).getSell());
     }
 
     @Override
-    public long getItemId(int position){
-        return position;
+    public int getItemCount() {
+        return mgoods.size();
     }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        ForBean mbean = getItem(position);
-        ViewHolder holder=null;
-        if(convertView==null){
-            convertView =inflater.inflate(R.layout.item_home,null);
-            holder=new ViewHolder();
-            holder.pic=(ImageView) convertView.findViewById(R.id.pic);
-            holder.tv_author= (TextView) convertView.findViewById(R.id.author_name);
-            holder.tv_latest=(TextView)convertView.findViewById(R.id.latest_name);
-            holder.tv_novlename=(TextView) convertView.findViewById(R.id.novel_name);
-            holder.tv_time=(TextView) convertView.findViewById(R.id.span_time);
-            convertView.setTag(holder);
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        TextView mText;
+        ImageView img;
+        TextView pri;
+        TextView pri_now;
+        ViewHolder(View itemView) {
+            super(itemView);
+            mText=itemView.findViewById(R.id.tx1);
+            img=itemView.findViewById(R.id.img);
+            pri=itemView.findViewById(R.id.tx2);
+            pri_now=itemView.findViewById(R.id.tx3);
+            itemView.setOnClickListener(this);
         }
-        else{
-            holder=(ViewHolder)convertView.getTag();
+        @Override
+        public void onClick(View view) {
+            if (mOnRvItemClick != null)
+                mOnRvItemClick.onItemClick(view, getAdapterPosition());
         }
-        holder.pic.setImageBitmap(mbean.getPic());
-        holder.tv_time.setText(mbean.getTime());
-        holder.tv_novlename.setText(mbean.getNovelname());
-        holder.tv_latest.setText(mbean.getLatestname());
-        holder.tv_author.setText(mbean.getAuthorName());
-        return convertView;
     }
-    public void add(){
-        notifyDataSetChanged();
-    }
-
-    private class ViewHolder {
-        ImageView pic;
-        TextView tv_author;
-        TextView tv_latest;
-        TextView tv_time;
-        TextView tv_novlename;
+    public interface onRecyclerViewItemClick {
+        void onItemClick(View v, int position);
     }
 }

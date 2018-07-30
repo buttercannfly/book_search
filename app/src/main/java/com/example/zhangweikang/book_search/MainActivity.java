@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Document document2;
     private SearchView mSearchView;
     private Button bt;
+    private Button bt2;
 
     public static String new_url = "https://www.gxwztv.com/search.htm?keyword=";
     @Override
@@ -49,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,Robot.class);
+                startActivity(intent);
+            }
+        });
+        bt2=findViewById(R.id.bt2);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Main.class);
                 startActivity(intent);
             }
         });

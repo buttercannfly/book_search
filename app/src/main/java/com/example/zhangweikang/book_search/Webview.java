@@ -167,7 +167,7 @@ public class Webview extends AppCompatActivity {
         settings.setLoadsImagesAutomatically(true);//自动加载图片
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mWvShow.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);//这两句话也太帅了吧,android 5.0的问题
+            mWvShow.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);//这两句话也太帅了吧,android 5.0+的问题
         }
     }
 

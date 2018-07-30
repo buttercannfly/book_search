@@ -19,6 +19,7 @@ public class ForBean {
     public String authorName;
     public String time;
     public Bitmap pic;
+    public String image;
 
 
     public String getText(){
@@ -48,5 +49,13 @@ public class ForBean {
 
     public void setPic(Bitmap pic) {
         this.pic = pic;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

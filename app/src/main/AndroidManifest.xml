@@ -29,6 +29,10 @@
         </activity>
         <activity android:name=".register" />
         <activity android:name=".Robot"></activity>
+        <activity android:name=".Main"></activity>
+        <activity android:name=".Show"></activity>
+        <activity android:name=".Info"></activity>
+        <activity android:name=".Perchase"></activity>
     </application>
 
 </manifest>

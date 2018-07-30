@@ -37,7 +37,7 @@ public class ShowActivity extends AppCompatActivity {
     private Document document;
     private ListView list_item;
     private  String page_url;
-    private MyAdapter me;
+    private MAdapter me;
     private Handler mHandler;
 
     @Override
@@ -99,7 +99,7 @@ public class ShowActivity extends AppCompatActivity {
 
 
             list_item = (ListView) findViewById(R.id.lllist);
-            me = new MyAdapter(mBeans,ShowActivity.this);
+            me = new MAdapter(mBeans,ShowActivity.this);
             list_item.setAdapter(me);
             list_item.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
