@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Perchase">
+    tools:context=".Shop.Perchase">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,17 +13,49 @@
         android:layout_gravity="center"
         android:background="@android:color/holo_blue_light"
         android:gravity="center"
-        android:text="编辑收货地址"
+        android:text="填写订单"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="收货信息"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        app:fontFamily="monospace" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:layout_weight="1"
+        />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收货人"
-            />
+            android:layout_weight="2"
+            android:id="@+id/tel"/>
     </LinearLayout>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addr"/>
+</LinearLayout>
+
+    <Button
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt"
+        android:text="Submit"/>
 
 </LinearLayout>

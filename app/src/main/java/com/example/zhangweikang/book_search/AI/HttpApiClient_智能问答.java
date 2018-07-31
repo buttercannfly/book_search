@@ -3,7 +3,7 @@
 //  Copyright © 2016年 Alibaba. All rights reserved.
 //
 
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.AI;
 
 import com.alibaba.cloudapi.sdk.client.HttpApiClient;
 import com.alibaba.cloudapi.sdk.enums.HttpMethod;
@@ -13,16 +13,18 @@ import com.alibaba.cloudapi.sdk.model.ApiCallback;
 import com.alibaba.cloudapi.sdk.model.ApiRequest;
 import com.alibaba.cloudapi.sdk.model.HttpClientBuilderParams;
 
-public class HttpsApiClient_智能问答 extends HttpApiClient {
+
+public class HttpApiClient_智能问答 extends HttpApiClient {
     public final static String HOST = "jisuznwd.market.alicloudapi.com";
-    static HttpsApiClient_智能问答 instance = new HttpsApiClient_智能问答();
-    public static HttpsApiClient_智能问答 getInstance(){return instance;}
+    static HttpApiClient_智能问答 instance = new HttpApiClient_智能问答();
+    public static HttpApiClient_智能问答 getInstance(){return instance;}
 
     public void init(HttpClientBuilderParams httpClientBuilderParams){
-        httpClientBuilderParams.setScheme(Scheme.HTTPS);
+        httpClientBuilderParams.setScheme(Scheme.HTTP);
         httpClientBuilderParams.setHost(HOST);
         super.init(httpClientBuilderParams);
     }
+
 
 
 

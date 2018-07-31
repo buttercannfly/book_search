@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Shop;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.zhangweikang.book_search.R;
 
 import java.util.List;
 

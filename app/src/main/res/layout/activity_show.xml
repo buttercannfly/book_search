@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.zhangweikang.book_search.ShowActivity">
+    tools:context="com.example.zhangweikang.book_search.Book_index.ShowActivity">
 
 
     <ListView

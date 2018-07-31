@@ -1,8 +1,6 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Shop;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
+import com.example.zhangweikang.book_search.Book_index.ForBean;
+import com.example.zhangweikang.book_search.R;
 
 import java.util.List;
 

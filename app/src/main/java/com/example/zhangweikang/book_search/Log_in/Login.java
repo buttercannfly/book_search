@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Log_in;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.zhangweikang.book_search.Shop.Dingdan;
+import com.example.zhangweikang.book_search.MainActivity;
+import com.example.zhangweikang.book_search.R;
 
 public class Login extends AppCompatActivity {
 
@@ -32,6 +36,7 @@ public class Login extends AppCompatActivity {
                 if (result == 1) {
                     Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(Login.this,MainActivity.class);
+                    Dingdan.setUser(name);
                     startActivity(intent);
                 } else if (result == 0) {
                     Toast.makeText(Login.this, "用户名不存在！", Toast.LENGTH_SHORT).show();

@@ -4,15 +4,17 @@ package com.example.zhangweikang.book_search;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.LoginFilter;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.zhangweikang.book_search.AI.Robot;
+import com.example.zhangweikang.book_search.Book_index.ForBean;
+import com.example.zhangweikang.book_search.Book_index.Page;
+import com.example.zhangweikang.book_search.Book_index.ShowActivity;
+import com.example.zhangweikang.book_search.Shop.Main;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,8 +24,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";

@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Shop;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.zhangweikang.book_search.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

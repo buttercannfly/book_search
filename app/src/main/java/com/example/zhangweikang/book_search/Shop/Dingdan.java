@@ -1,10 +1,11 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Shop;
 
 public class Dingdan {
     public static String price;
     public static String name;
     public static String color;
     public static String size;
+    public static String user;
 
     public static void setSize(String size) {
         Dingdan.size = size;
@@ -36,5 +37,13 @@ public class Dingdan {
 
     public static void setColor(String color) {
         Dingdan.color = color;
+    }
+
+    public static String getUser() {
+        return user;
+    }
+
+    public static void setUser(String user) {
+        Dingdan.user = user;
     }
 }

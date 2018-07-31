@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Log_in;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -40,7 +40,7 @@ public class SqliteDB {
     }
 
     /**
-     * 将User实例存储到数据库。
+     * 将User实例存储数据库。
      */
     public int  saveUser(User user) {
         if (user != null) {

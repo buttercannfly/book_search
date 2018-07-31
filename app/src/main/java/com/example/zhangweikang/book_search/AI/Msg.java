@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.AI;
 
 public class Msg {
     static final int TYPE_RECEIVE = 1;

@@ -7,7 +7,7 @@
     android:background="#ccc"
     android:orientation="vertical"
     android:id="@+id/activity_robot"
-    tools:context=".Robot">
+    tools:context=".AI.Robot">
 
     <ListView
         android:id="@+id/lv"

@@ -1,6 +1,5 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.AI;
 
-import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
+import com.example.zhangweikang.book_search.R;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.locks.Lock;
 
 public class Robot extends AppCompatActivity {
     private MyAdapter myAdapter;
@@ -51,7 +50,7 @@ public class Robot extends AppCompatActivity {
 
 
 
-                    Demo_智能问答.智能回复接口HttpsTest(et_input.getText().toString());
+                    Constant.Demo_智能问答.智能回复接口HttpsTest(et_input.getText().toString());
                     TimerTask task = new TimerTask() {
                         @Override
                         public void run() {

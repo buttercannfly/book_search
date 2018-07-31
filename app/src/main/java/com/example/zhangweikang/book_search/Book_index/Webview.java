@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Book_index;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -27,6 +27,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toolbar;
 
+import com.example.zhangweikang.book_search.R;
 
 
 public class Webview extends AppCompatActivity {

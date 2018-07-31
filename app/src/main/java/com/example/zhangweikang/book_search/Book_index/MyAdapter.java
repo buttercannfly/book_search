@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Book_index;
 
 
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.zhangweikang.book_search.Shop.Goods;
+import com.example.zhangweikang.book_search.R;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Shop;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+
+import com.example.zhangweikang.book_search.Book_index.MyAdapter;
+import com.example.zhangweikang.book_search.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

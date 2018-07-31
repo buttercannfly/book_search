@@ -1,4 +1,4 @@
-package com.example.zhangweikang.book_search;
+package com.example.zhangweikang.book_search.Book_index;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,6 +14,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+
+import com.example.zhangweikang.book_search.Shop.MAdapter;
+import com.example.zhangweikang.book_search.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
