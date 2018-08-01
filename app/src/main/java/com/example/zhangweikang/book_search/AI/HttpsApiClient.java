@@ -13,10 +13,10 @@ import com.alibaba.cloudapi.sdk.model.ApiCallback;
 import com.alibaba.cloudapi.sdk.model.ApiRequest;
 import com.alibaba.cloudapi.sdk.model.HttpClientBuilderParams;
 
-public class HttpsApiClient_智能问答 extends HttpApiClient {
+public class HttpsApiClient extends HttpApiClient {
     public final static String HOST = "jisuznwd.market.alicloudapi.com";
-    static HttpsApiClient_智能问答 instance = new HttpsApiClient_智能问答();
-    public static HttpsApiClient_智能问答 getInstance(){return instance;}
+    static HttpsApiClient instance = new HttpsApiClient();
+    public static HttpsApiClient getInstance(){return instance;}
 
     public void init(HttpClientBuilderParams httpClientBuilderParams){
         httpClientBuilderParams.setScheme(Scheme.HTTPS);

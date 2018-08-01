@@ -32,7 +32,7 @@ public class Constant {
             HttpClientBuilderParams httpParam = new HttpClientBuilderParams();
             httpParam.setAppKey("24979062");
             httpParam.setAppSecret("acfb9fdffc7e66d75fc064a31d8818d8");
-            HttpApiClient_智能问答.getInstance().init(httpParam);
+            HttpApiClient.getInstance().init(httpParam);
 
 
             //HTTPS Client init
@@ -81,13 +81,13 @@ public class Constant {
             httpsParam.setX509TrustManager(xtm);
             httpsParam.setHostnameVerifier(DO_NOT_VERIFY);
 
-            HttpsApiClient_智能问答.getInstance().init(httpsParam);
+            HttpsApiClient.getInstance().init(httpsParam);
 
 
         }
 
         public static void 智能回复接口HttpTest(){
-            HttpApiClient_智能问答.getInstance().智能回复接口("沈阳天气" , new ApiCallback() {
+            HttpApiClient.getInstance().智能回复接口("沈阳天气" , new ApiCallback() {
                 @Override
                 public void onFailure(ApiRequest request, Exception e) {
                     e.printStackTrace();
@@ -105,7 +105,7 @@ public class Constant {
         }
 
         public static void 智能回复接口HttpsTest(String question){
-            HttpsApiClient_智能问答.getInstance().智能回复接口(question , new ApiCallback() {
+            HttpsApiClient.getInstance().智能回复接口(question , new ApiCallback() {
                 @Override
                 public void onFailure(ApiRequest request, Exception e) {
                     e.printStackTrace();

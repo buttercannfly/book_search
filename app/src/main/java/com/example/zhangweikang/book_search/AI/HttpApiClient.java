@@ -5,7 +5,6 @@
 
 package com.example.zhangweikang.book_search.AI;
 
-import com.alibaba.cloudapi.sdk.client.HttpApiClient;
 import com.alibaba.cloudapi.sdk.enums.HttpMethod;
 import com.alibaba.cloudapi.sdk.enums.ParamPosition;
 import com.alibaba.cloudapi.sdk.enums.Scheme;
@@ -14,10 +13,10 @@ import com.alibaba.cloudapi.sdk.model.ApiRequest;
 import com.alibaba.cloudapi.sdk.model.HttpClientBuilderParams;
 
 
-public class HttpApiClient_智能问答 extends HttpApiClient {
+public class HttpApiClient extends com.alibaba.cloudapi.sdk.client.HttpApiClient {
     public final static String HOST = "jisuznwd.market.alicloudapi.com";
-    static HttpApiClient_智能问答 instance = new HttpApiClient_智能问答();
-    public static HttpApiClient_智能问答 getInstance(){return instance;}
+    static HttpApiClient instance = new HttpApiClient();
+    public static HttpApiClient getInstance(){return instance;}
 
     public void init(HttpClientBuilderParams httpClientBuilderParams){
         httpClientBuilderParams.setScheme(Scheme.HTTP);

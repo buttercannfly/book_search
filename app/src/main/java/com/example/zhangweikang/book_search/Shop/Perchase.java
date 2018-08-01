@@ -35,21 +35,21 @@ public class Perchase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     Intent intent = new Intent(Perchase.this,Add_info.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,1);
             }
         });
         addr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Perchase.this,Add_info.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         tel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Perchase.this,Add_info.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         bt.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +58,20 @@ public class Perchase extends AppCompatActivity {
                 Toast.makeText(Perchase.this,"perchase finished",Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==1){
+            Bundle bd=data.getExtras();
+            name.setText(bd.getString("name"));
+            tel.setText(bd.getString("tel"));
+            addr.setText(bd.getString("addr"));
+            Dingdan.setT_name(name.getText().toString());
+            Dingdan.setT_addr(addr.getText().toString());
+            Dingdan.setT_tel(tel.getText().toString());
+        }
     }
 }
